@@ -487,6 +487,14 @@ body[data-philippians-route="commentary"] .commentary-blank-space {
 
 }
 
+.reader-review-notice {
+  margin: 0.18rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
 /*
  * On desktop the two reading panes own the scroll position. The global footer
  * is revealed only when either pane reaches its end, and the reader contracts

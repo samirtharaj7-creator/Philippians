@@ -52,6 +52,7 @@ export function ChapterStudy({
   const [notesLevel, setNotesLevel] = useState(0);
   const [isMobileReader, setIsMobileReader] = useState(false);
   const readerRef = useRef<HTMLElement>(null);
+  const reviewDeferred = bookName === "Philippians" && chapter.chapterNumber === 4;
 
   useEffect(() => {
     function syncFromHash() {
@@ -353,9 +354,14 @@ export function ChapterStudy({
 
       <aside className="commentary-pane">
         <div className="reader-pane-toolbar reader-pane-toolbar-notes no-print">
-          <div className="reader-pane-kicker">
-            <List className="h-5 w-5" />
-            Study Notes
+          <div>
+            <div className="reader-pane-kicker">
+              <List className="h-5 w-5" />
+              Study Notes
+            </div>
+            {reviewDeferred ? (
+              <p className="reader-review-notice">User commentary · editorial review deferred</p>
+            ) : null}
           </div>
           <FontScaleControls
             label="Study Notes text size controls"

@@ -16,7 +16,10 @@ export async function generateMetadata({ params }: { params: Promise<{ chapter: 
   const { chapter } = await params;
   const content = getPhilippiansChapter(chapter);
   if (!content) notFound();
-  return { title: `Philippians ${content.chapterNumber}`, description: `Philippians ${content.chapterNumber} in the King James Version, with space for verse-by-verse commentary.` };
+  const description = content.chapterNumber === 4
+    ? "Philippians 4 in the King James Version with user-provided commentary whose editorial and theological review is deferred."
+    : `Philippians ${content.chapterNumber} in the King James Version with verse-by-verse commentary.`;
+  return { title: `Philippians ${content.chapterNumber}`, description };
 }
 
 export default async function PhilippiansChapterPage({ params }: { params: Promise<{ chapter: string }> }) {
